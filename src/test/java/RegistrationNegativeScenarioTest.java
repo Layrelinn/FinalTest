@@ -12,7 +12,6 @@ public class RegistrationNegativeScenarioTest extends BaseTest {
         String validationFieldHighlight =
                 mainPage.goToFrame()
                         .clickOnSignInButton()
-                        .waiter()
                         .clickOnCreateAccountLink()
                         .clickOnSocialTitleRadioButton()
                         .enterInvalidFirstName()
@@ -38,7 +37,6 @@ public class RegistrationNegativeScenarioTest extends BaseTest {
         String validationMessageText =
                 mainPage.goToFrame()
                         .clickOnSignInButton()
-                        .waiter()
                         .clickOnCreateAccountLink()
                         .clickOnSocialTitleRadioButton()
                         .enterInvalidFirstName()

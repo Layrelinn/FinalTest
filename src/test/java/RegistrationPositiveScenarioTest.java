@@ -12,7 +12,6 @@ public class RegistrationPositiveScenarioTest extends BaseTest {
         String actualUserName =
                 mainPage.goToFrame()
                         .clickOnSignInButton()
-                        .waiter()
                         .clickOnCreateAccountLink()
                         .clickOnSocialTitleRadioButton()
                         .enterFirstName()

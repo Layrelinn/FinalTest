@@ -78,6 +78,9 @@ public class MainPage extends BasePage {
 
     }
 
+    //public String getLanguagesText() {
+    //}
+
     // not working properly
     public Boolean findUkrainianLanguage() {
         for (WebElement language : listOfLanguagesInDropdown)

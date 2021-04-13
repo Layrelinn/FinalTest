@@ -16,12 +16,6 @@ public class LogInPage extends BasePage {
         PageFactory.initElements(getDriver(), this);
     }
 
-    public LogInPage waiter() {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(@href,'create_account=1')]")));
-        return this;
-    }
-
 
     public CreateAnAccountPage clickOnCreateAccountLink() {
         createAccountLink.click();
