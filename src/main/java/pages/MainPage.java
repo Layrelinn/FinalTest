@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -78,16 +79,12 @@ public class MainPage extends BasePage {
 
     }
 
-    //public String getLanguagesText() {
-    //}
-
-    // not working properly
-    public Boolean findUkrainianLanguage() {
-        for (WebElement language : listOfLanguagesInDropdown)
-            return language.getText().contains("Українська");
-        //return listOfLanguagesInDropdown.contains("Українська");
-        return false;
-
+    public List<String> findLanguages() {
+        List<String> presenceLanguage = new ArrayList<>();
+        for(WebElement language : listOfLanguagesInDropdown){
+            presenceLanguage.add(language.getText());
+        }
+        return presenceLanguage;
     }
 
     public LogInPage clickOnSignInButton() {

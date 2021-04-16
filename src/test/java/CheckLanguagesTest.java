@@ -2,6 +2,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+
 public class CheckLanguagesTest extends BaseTest {
 
     @Test
@@ -23,12 +28,13 @@ public class CheckLanguagesTest extends BaseTest {
 
         MainPage mainPage = new MainPage();
 
-        boolean ukrainianIsPresented =
+        List<String> languagesInTheDropdown =
                 mainPage.goToFrame()
                         .clickOnLanguagesDropdown()
-                        .findUkrainianLanguage();
+                        .findLanguages();
 
-        Assert.assertTrue(ukrainianIsPresented);
+        assertThat(languagesInTheDropdown)
+                .as("Ukrainian not found!").contains("Українська");
 
     }
 
