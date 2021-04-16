@@ -14,8 +14,4 @@ public abstract class BasePage {
         return driver;
     }
 
-//    public WebElement find(By locator) {
-//        return driver.findElement(locator);
-//    }
-
 }

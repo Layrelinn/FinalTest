@@ -1,6 +1,7 @@
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MainPage;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SubscribeWithInvalidEmailTest extends BaseTest {
 
@@ -17,7 +18,9 @@ public class SubscribeWithInvalidEmailTest extends BaseTest {
                         .clickOnSubscribeButton()
                         .getTextFromPopUpErrorMessage();
 
-        Assert.assertEquals(popUpActualText, "Invalid email address.");
+        assertThat(popUpActualText)
+                .as("Pop-up error message doesn't match with expected")
+                .isEqualTo("Invalid email address.");
 
     }
 }

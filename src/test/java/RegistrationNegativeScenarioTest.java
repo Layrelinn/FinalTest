@@ -2,6 +2,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class RegistrationNegativeScenarioTest extends BaseTest {
 
     @Test
@@ -26,6 +28,10 @@ public class RegistrationNegativeScenarioTest extends BaseTest {
 
         Assert.assertEquals(validationFieldHighlight, "rgba(255, 76, 76, 1)");
 
+        assertThat(validationFieldHighlight)
+                .as("The highlighted color of the frame is not red")
+                .isEqualTo("rgba(255, 76, 76, 1)");
+
     }
 
 
@@ -49,7 +55,9 @@ public class RegistrationNegativeScenarioTest extends BaseTest {
                         .clickOnSaveButtonWithInvalidData()
                         .getValidationMessageText();
 
-        Assert.assertEquals(validationMessageText, "Invalid format.");
+        assertThat(validationMessageText)
+                .as("The pop-up error message doesn't match with expected")
+                .isEqualTo("Invalid format.");
 
     }
 }

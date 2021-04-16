@@ -1,3 +1,4 @@
+import org.assertj.core.api.Assertions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MainPage;
@@ -24,8 +25,9 @@ public class RegistrationPositiveScenarioTest extends BaseTest {
                         .clickOnSaveButton()
                         .getUserName();
 
-        Assert.assertEquals(actualUserName, "Lika Rovinska");
-
+        Assertions.assertThat(actualUserName)
+                .as("Name of the user is not displaying near card button")
+                .isEqualTo("Lika Rovinska");
 
     }
 }

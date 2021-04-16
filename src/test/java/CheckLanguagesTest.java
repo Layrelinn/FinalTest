@@ -1,4 +1,3 @@
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
@@ -19,7 +18,9 @@ public class CheckLanguagesTest extends BaseTest {
                         .clickOnLanguagesDropdown()
                         .getAllLanguagesCountFromDropdown();
 
-        Assert.assertEquals(actualLanguagesCount, 44);
+        assertThat(actualLanguagesCount)
+                .as("The count of the languages did nor matched with expected")
+                .isEqualTo(44);
 
     }
 
