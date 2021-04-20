@@ -35,7 +35,8 @@ public class CheckLanguagesTest extends BaseTest {
                         .findLanguages();
 
         assertThat(languagesInTheDropdown)
-                .as("Ukrainian not found!").contains("Українська");
+                .as("Ukrainian not found!")
+                .contains("Українська");
 
     }
 

@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -32,6 +33,15 @@ public class MainPage extends BasePage {
 
     @FindBy(xpath = "//div[@id='_desktop_user_info']//span[@class='hidden-sm-down']")
     private WebElement userName;
+
+    @FindBy(xpath = "//li[@id='category-3']//a[contains(@href,'3-clothes')]")
+    private WebElement clothesMenu;
+
+    @FindBy(xpath = "//a[contains(@href,'4-men')]")
+    private WebElement menCategory;
+
+    @FindBy(xpath = "//a[contains(@href,'5-women')]")
+    private WebElement womenCategory;
 
 
     public MainPage() {
@@ -94,6 +104,22 @@ public class MainPage extends BasePage {
 
     public String getUserName() {
         return userName.getText();
+    }
+
+
+    Actions actions = new Actions(driver);
+
+    public MainPage hoverOverClothesLink() {
+        actions.moveToElement(clothesMenu).build().perform();
+        return this;
+    }
+
+    public boolean isMenCategoryAppears() {
+        return menCategory.isDisplayed();
+    }
+
+    public boolean isWomenCategoryAppears() {
+        return womenCategory.isDisplayed();
     }
 
 }
