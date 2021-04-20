@@ -34,14 +34,29 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//div[@id='_desktop_user_info']//span[@class='hidden-sm-down']")
     private WebElement userName;
 
-    @FindBy(xpath = "//li[@id='category-3']//a[contains(@href,'3-clothes')]")
+    @FindBy(xpath = "//li[@id='category-3']")
     private WebElement clothesMenu;
 
-    @FindBy(xpath = "//a[contains(@href,'4-men')]")
+    @FindBy(xpath = "//li[@id='category-4']")
     private WebElement menCategory;
 
-    @FindBy(xpath = "//a[contains(@href,'5-women')]")
+    @FindBy(xpath = "//li[@id='category-5']")
     private WebElement womenCategory;
+
+    @FindBy(xpath = "//li[@id='category-6']")
+    private WebElement accessoriesMenu;
+
+    @FindBy(xpath = "//li[@id='category-7']")
+    private WebElement stationeryCategory;
+
+    @FindBy(xpath = "//li[@id='category-8']")
+    private WebElement homeAccessoriesCategory;
+
+    @FindBy(xpath = "//li[@id='category-9']")
+    private WebElement artMenu;
+
+    @FindBy(xpath = "//li[@id='category-9']//div[contains(@class,'popover sub-menu')]")
+    private WebElement artSubCategories;
 
 
     public MainPage() {
@@ -120,6 +135,33 @@ public class MainPage extends BasePage {
 
     public boolean isWomenCategoryAppears() {
         return womenCategory.isDisplayed();
+    }
+
+    public MainPage hoverOverAccessoriesMenu() {
+        actions.moveToElement(accessoriesMenu).build().perform();
+        return this;
+    }
+
+    public boolean isStationeryCategoryAppears() {
+        return stationeryCategory.isDisplayed();
+    }
+
+    public boolean isHomeAccessoriesCategoryAppears() {
+        return homeAccessoriesCategory.isDisplayed();
+    }
+
+    public MainPage hoverOverArtMenu() {
+        actions.moveToElement(artMenu).build().perform();
+        return this;
+    }
+
+    public boolean isAnySubCategoriesAppears() {
+        try {
+            artSubCategories.isDisplayed();
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
     }
 
 }
