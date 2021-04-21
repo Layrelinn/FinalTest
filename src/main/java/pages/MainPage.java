@@ -57,8 +57,11 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//li[@id='category-9']")
     private WebElement artMenu;
 
-    @FindBy(xpath = "//li[@id='category-9']//div[contains(@class,'popover sub-menu')]")
-    private WebElement artSubCategories;
+//    @FindBy(xpath = "//li[@id='category-9']//div[contains(@class,'popover sub-menu')]")
+//    private WebElement artSubCategories;
+
+    @FindBy(xpath = "//li[@id='category-9']//li")
+    private List<WebElement> artSubCategories;
 
 
     public MainPage() {
@@ -163,12 +166,16 @@ public class MainPage extends BasePage {
         return this;
     }
 
+//    public boolean isAnySubCategoriesAppears() {
+//        try {
+//            return artSubCategories.isDisplayed();
+//        } catch (org.openqa.selenium.NoSuchElementException e) {
+//            return false;
+//        }
+//    }
+
     public boolean isAnySubCategoriesAppears() {
-        try {
-            return artSubCategories.isDisplayed();
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            return false;
-        }
+       return artSubCategories.size() !=0;
     }
 
 }
