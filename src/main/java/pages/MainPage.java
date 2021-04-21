@@ -1,5 +1,6 @@
 package pages;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 
 public class MainPage extends BasePage {
 
@@ -64,32 +66,38 @@ public class MainPage extends BasePage {
     }
 
     public MainPage scrollToElement() throws InterruptedException {
+        log.info("Scroll to email address input element on the main page");
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", emailAddressInput);
         Thread.sleep(500);
         return this;
     }
 
     public MainPage goToFrame() {
+        log.info("Switching to the separate page frame");
         getDriver().switchTo().frame("framelive");
         return this;
     }
 
     public MainPage clickOnEmailAddressInput() {
+        log.info("Clicking on the email address input element");
         emailAddressInput.click();
         return this;
     }
 
     public MainPage setEmail(String email) {
+        log.info("Enter the {} into email address input field", email);
         emailAddressInput.sendKeys(email);
         return this;
     }
 
     public MainPage clickOnSubscribeButton() {
+        log.info("Clicking on the Subscribe button");
         subscribeButton.click();
         return this;
     }
 
     public String getTextFromPopUpErrorMessage() {
+        log.info("Getting text from the pop-up error message");
         return popUpErrorMessage.getText();
 
     }
@@ -106,7 +114,7 @@ public class MainPage extends BasePage {
 
     public List<String> findLanguages() {
         List<String> presenceLanguage = new ArrayList<>();
-        for(WebElement language : listOfLanguagesInDropdown){
+        for (WebElement language : listOfLanguagesInDropdown) {
             presenceLanguage.add(language.getText());
         }
         return presenceLanguage;
@@ -157,8 +165,7 @@ public class MainPage extends BasePage {
 
     public boolean isAnySubCategoriesAppears() {
         try {
-            artSubCategories.isDisplayed();
-            return true;
+            return artSubCategories.isDisplayed();
         } catch (org.openqa.selenium.NoSuchElementException e) {
             return false;
         }
