@@ -1,12 +1,13 @@
-import org.assertj.core.api.Assertions;
+import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
 public class CheckCategoriesTest extends BaseTest {
 
     @Test
-    public void CheckClothesCategories() {
+    public void CheckCategories() {
         MainPage mainPage = new MainPage();
+        SoftAssertions sa = new SoftAssertions();
 
         boolean actualMenCategoryIsDisplaying =
                 mainPage.goToFrame()
@@ -17,44 +18,38 @@ public class CheckCategoriesTest extends BaseTest {
                 mainPage.hoverOverClothesLink()
                         .isWomenCategoryAppears();
 
-        Assertions.assertThat(actualMenCategoryIsDisplaying & actualWomenCategoryIsDisplaying)
-                .as("The Men and Women subcategories are not displaying!")
+        sa.assertThat(actualMenCategoryIsDisplaying)
+                .as("The Men subcategory is not displaying!")
+                .isTrue();
+        sa.assertThat(actualWomenCategoryIsDisplaying)
+                .as("The Women subcategory is not displaying!")
                 .isTrue();
 
-    }
-
-    @Test
-    public void CheckAccessoriesCategories() {
-
-        MainPage mainPage = new MainPage();
 
         boolean actualStationeryCategoryIsDisplaying =
-                mainPage.goToFrame()
-                        .hoverOverAccessoriesMenu()
+                mainPage.hoverOverAccessoriesMenu()
                         .isStationeryCategoryAppears();
 
         boolean actualHomeAccessoriesCategoryIsDisplaying =
                 mainPage.hoverOverAccessoriesMenu()
                         .isHomeAccessoriesCategoryAppears();
 
-        Assertions.assertThat(actualStationeryCategoryIsDisplaying & actualHomeAccessoriesCategoryIsDisplaying)
-                .as("The Stationery and Home Accessories subcategories are not displaying!")
+        sa.assertThat(actualStationeryCategoryIsDisplaying)
+                .as("The Stationery subcategory is not displaying!")
+                .isTrue();
+        sa.assertThat(actualHomeAccessoriesCategoryIsDisplaying)
+                .as("The Home Accessories subcategory is not displaying!")
                 .isTrue();
 
-    }
-
-    @Test
-    public void CheckAnySubCategories() {
-        MainPage mainPage = new MainPage();
 
         boolean actualArtCategoriesIsDisplaying =
-                mainPage.goToFrame()
-                .hoverOverArtMenu()
-                .isAnySubCategoriesAppears();
+                mainPage.hoverOverArtMenu()
+                        .isAnySubCategoriesAppears();
 
-        Assertions.assertThat(actualArtCategoriesIsDisplaying)
+        sa.assertThat(actualArtCategoriesIsDisplaying)
                 .as("There are some subcategories under the Art menu!")
                 .isFalse();
 
     }
+
 }

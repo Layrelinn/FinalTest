@@ -1,9 +1,8 @@
+import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class CheckLanguagesTest extends BaseTest {
@@ -12,29 +11,22 @@ public class CheckLanguagesTest extends BaseTest {
     public void CheckLanguages() {
 
         MainPage mainPage = new MainPage();
+        SoftAssertions sa = new SoftAssertions();
 
         int actualLanguagesCount =
                 mainPage.goToFrame()
                         .clickOnLanguagesDropdown()
                         .getAllLanguagesCountFromDropdown();
 
-        assertThat(actualLanguagesCount)
-                .as("The count of the languages did nor matched with expected")
+        sa.assertThat(actualLanguagesCount)
+                .as("The count of the languages did not matched with expected")
                 .isEqualTo(44);
 
-    }
-
-    @Test
-    public void CheckUkrainianIsPresented() {
-
-        MainPage mainPage = new MainPage();
-
         List<String> languagesInTheDropdown =
-                mainPage.goToFrame()
-                        .clickOnLanguagesDropdown()
+                mainPage.clickOnLanguagesDropdown()
                         .findLanguages();
 
-        assertThat(languagesInTheDropdown)
+        sa.assertThat(languagesInTheDropdown)
                 .as("Ukrainian not found!")
                 .contains("Українська");
 
