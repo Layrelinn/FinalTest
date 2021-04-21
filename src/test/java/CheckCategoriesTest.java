@@ -50,6 +50,8 @@ public class CheckCategoriesTest extends BaseTest {
                 .as("There are some subcategories under the Art menu!")
                 .isFalse();
 
+        sa.assertAll();
+
     }
 
 }

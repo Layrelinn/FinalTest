@@ -23,12 +23,13 @@ public class CheckLanguagesTest extends BaseTest {
                 .isEqualTo(44);
 
         List<String> languagesInTheDropdown =
-                mainPage.clickOnLanguagesDropdown()
-                        .findLanguages();
+                mainPage.findLanguages();
 
         sa.assertThat(languagesInTheDropdown)
                 .as("Ukrainian not found!")
                 .contains("Українська");
+
+        sa.assertAll();
 
     }
 
