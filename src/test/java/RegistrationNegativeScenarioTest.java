@@ -1,15 +1,9 @@
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.MainPage;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class RegistrationNegativeScenarioTest extends BaseTest {
 
     @Test
-    public void checkTheRedHighlight() {
-
-        MainPage mainPage = new MainPage();
+    public void registrationNegativeScenario() {
 
         String validationFieldHighlight =
                 mainPage.goToFrame()
@@ -26,23 +20,13 @@ public class RegistrationNegativeScenarioTest extends BaseTest {
                         .clickOnSaveButtonWithInvalidData()
                         .firstNameBorderHighlight();
 
-        Assert.assertEquals(validationFieldHighlight, "rgba(255, 76, 76, 1)");
-
-        assertThat(validationFieldHighlight)
+        sa.assertThat(validationFieldHighlight)
                 .as("The highlighted color of the frame is not red")
                 .isEqualTo("rgba(255, 76, 76, 1)");
 
-    }
-
-
-    @Test
-    public void registrationWithInvalidData() {
-
-        MainPage mainPage = new MainPage();
 
         String validationMessageText =
-                mainPage.goToFrame()
-                        .clickOnSignInButton()
+                mainPage.clickOnSignInButton()
                         .clickOnCreateAccountLink()
                         .clickOnSocialTitleRadioButton()
                         .enterInvalidFirstName()
@@ -55,7 +39,7 @@ public class RegistrationNegativeScenarioTest extends BaseTest {
                         .clickOnSaveButtonWithInvalidData()
                         .getValidationMessageText();
 
-        assertThat(validationMessageText)
+        sa.assertThat(validationMessageText)
                 .as("The pop-up error message doesn't match with expected")
                 .isEqualTo("Invalid format.");
 

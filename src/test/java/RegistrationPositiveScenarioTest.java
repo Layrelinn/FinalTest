@@ -1,13 +1,10 @@
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
-import pages.MainPage;
 
 public class RegistrationPositiveScenarioTest extends BaseTest {
 
     @Test
     public void registrationWithValidData() {
-
-        MainPage mainPage = new MainPage();
 
         String actualUserName =
                 mainPage.goToFrame()

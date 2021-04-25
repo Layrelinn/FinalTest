@@ -8,8 +8,6 @@ public class SubscribeWithInvalidEmailTest extends BaseTest {
     @Test
     public void SubscribeWithInvalidEmail() throws InterruptedException {
 
-        MainPage mainPage = new MainPage();
-
         String popUpActualText =
                 mainPage.goToFrame()
                         .scrollToElement()

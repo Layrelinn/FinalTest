@@ -57,9 +57,6 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//li[@id='category-9']")
     private WebElement artMenu;
 
-//    @FindBy(xpath = "//li[@id='category-9']//div[contains(@class,'popover sub-menu')]")
-//    private WebElement artSubCategories;
-
     @FindBy(xpath = "//li[@id='category-9']//li")
     private List<WebElement> artSubCategories;
 
@@ -70,7 +67,7 @@ public class MainPage extends BasePage {
 
     public MainPage scrollToElement() throws InterruptedException {
         log.info("Scroll to email address input element on the main page");
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", emailAddressInput);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", emailAddressInput);
         Thread.sleep(500);
         return this;
     }
@@ -133,7 +130,7 @@ public class MainPage extends BasePage {
     }
 
 
-    Actions actions = new Actions(driver);
+    Actions actions = new Actions(getDriver());
 
     public MainPage hoverOverClothesLink() {
         actions.moveToElement(clothesMenu).build().perform();
@@ -166,16 +163,8 @@ public class MainPage extends BasePage {
         return this;
     }
 
-//    public boolean isAnySubCategoriesAppears() {
-//        try {
-//            return artSubCategories.isDisplayed();
-//        } catch (org.openqa.selenium.NoSuchElementException e) {
-//            return false;
-//        }
-//    }
-
     public boolean isAnySubCategoriesAppears() {
-       return artSubCategories.size() !=0;
+        return artSubCategories.size() != 0;
     }
 
 }

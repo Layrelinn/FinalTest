@@ -1,6 +1,4 @@
-import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
-import pages.MainPage;
 
 import java.util.List;
 
@@ -9,9 +7,6 @@ public class CheckLanguagesTest extends BaseTest {
 
     @Test
     public void CheckLanguages() {
-
-        MainPage mainPage = new MainPage();
-        SoftAssertions sa = new SoftAssertions();
 
         int actualLanguagesCount =
                 mainPage.goToFrame()
