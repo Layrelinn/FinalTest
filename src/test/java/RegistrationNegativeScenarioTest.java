@@ -1,9 +1,14 @@
+import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
+import pages.MainPage;
 
 public class RegistrationNegativeScenarioTest extends BaseTest {
 
     @Test
     public void registrationNegativeScenario() {
+
+        MainPage mainPage = new MainPage();
+        SoftAssertions sa = new SoftAssertions();
 
         String validationFieldHighlight =
                 mainPage.goToFrame()
@@ -42,6 +47,8 @@ public class RegistrationNegativeScenarioTest extends BaseTest {
         sa.assertThat(validationMessageText)
                 .as("The pop-up error message doesn't match with expected")
                 .isEqualTo("Invalid format.");
+
+        sa.assertAll();
 
     }
 }

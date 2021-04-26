@@ -1,10 +1,15 @@
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
+import pages.MainPage;
 
 public class RegistrationPositiveScenarioTest extends BaseTest {
 
     @Test
     public void registrationWithValidData() {
+
+        MainPage mainPage = new MainPage();
+        SoftAssertions sa = new SoftAssertions();
 
         String actualUserName =
                 mainPage.goToFrame()

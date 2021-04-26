@@ -1,9 +1,14 @@
+import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
+import pages.MainPage;
 
 public class CheckCategoriesTest extends BaseTest {
 
     @Test
     public void CheckCategories() {
+
+        MainPage mainPage = new MainPage();
+        SoftAssertions sa = new SoftAssertions();
 
         boolean actualMenCategoryIsDisplaying =
                 mainPage.goToFrame()
