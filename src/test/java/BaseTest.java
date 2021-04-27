@@ -23,6 +23,10 @@ public class BaseTest {
         System.out.println("Current browser is : " + browserName);
         System.out.println("Current thread id : " + Thread.currentThread().getId());
 
+        if(browserName==null){
+            browserName="chrome";
+        }
+
         if (browserName.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
@@ -33,7 +37,6 @@ public class BaseTest {
             WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
         }
-        else driver = new ChromeDriver();
 
         driver.manage().window().maximize();
         driver.get("https://demo.prestashop.com/");
